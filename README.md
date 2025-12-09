@@ -7,7 +7,15 @@ Backtesting the classic momentum strategy on S&P 500 stocks (2016-2025).
 This project implements the well-documented momentum factor: stocks that have performed well recently tend to continue performing well, and vice versa. The strategy ranks all S&P 500 stocks by their trailing 11-month returns (skipping the most recent month to avoid short-term reversal), then goes long the top decile and short the bottom decile.
 
 ## Key Findings
+
 The classic long-short momentum strategy produced a -0.11 Sharpe with 45% max drawdown — worse than holding cash. However, long-only momentum achieved 0.93 Sharpe with only 21% drawdown, nearly matching SPY (1.02 Sharpe during bull-market, w/ 24% max drawdown). The short leg destroyed value in a bull market, demonstrating why many practitioners prefer long-only factor tilts over market-neutral approaches.
+
+| Strategy | Sharpe | Max Drawdown | Total Return |
+|----------|--------|--------------|--------------|
+| Long-Short Momentum | -0.11 | -44.9% | -5% |
+| Long-Only Momentum | 0.93 | -20.8% | ~520% |
+| SPY Buy & Hold | 1.02 | -24.0% | ~250% |
+
 - **Pre-COVID (2016-2020):** Strategy worked as expected, compounding to ~$1.25 on $1 invested
 - **March 2020:** Momentum crash — the strategy suffered a ~45% drawdown as market leadership violently reversed
 - **Post-COVID:** Strategy struggled to recover, demonstrating tail risk
@@ -15,6 +23,17 @@ The classic long-short momentum strategy produced a -0.11 Sharpe with 45% max dr
 - **Increasing sample universe:** Increasing from 500 to 2,500 stocks only created noise and flooded model with bad data, and needs further investigation into the data-cleanup
 
 This matches academic research on momentum: it works until it doesn't, and when it fails, it fails hard at market inflection points.
+
+## Results
+
+### Strategy Comparison
+![Momentum Strategies vs S&P 500](charts/momentum_vs_spy.png)
+
+### Long-Short Momentum
+![Long-Short Momentum](charts/SP500_long_short_growth.png)
+
+### Long-Only Momentum
+![Long-Only Momentum](charts/long_only_growth.png)
 
 ## Methodology
 
@@ -29,7 +48,6 @@ This matches academic research on momentum: it works until it doesn't, and when 
 - `requirements.txt` — Python dependencies
 
 ## Setup
-
 ```bash
 # Clone the repo
 git clone https://github.com/Caden-Ramsey/momentum-factor-model.git
@@ -47,10 +65,6 @@ jupyter notebook momentum.ipynb
 ```
 
 Note: The initial data pull takes ~3 minutes for 500 stocks × 10 years of daily data, depending on WiFi connection.
-
-## Results
-
-![Momentum Strategy of $1 invested](charts/SP500_long_short_growth.png)
 
 ## Lessons Learned
 
