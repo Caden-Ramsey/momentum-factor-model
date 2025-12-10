@@ -9,7 +9,7 @@ This project implements the well-documented momentum factor: stocks that have pe
 ## Key Findings
 
 The classic long-short momentum strategy produced a -0.11 Sharpe with 45% max drawdown — worse than holding cash. However, a Long-only momentum strategy outperformed SPY Buy & Hold across all metrics: higher Sharpe (0.93 vs 0.79), nearly double the total return (~487% vs ~254%), and lower maximum drawdown (-20.8% vs -24.0%). The short leg destroyed value in a bull market, demonstrating why many practitioners prefer long-only factor tilts over market-neutral approaches.
-*This does not take into account managagemnt fees or taxes*
+*This does not take into account management fees or taxes*
 
 | Strategy | Sharpe | Max Drawdown | Total Return |
 |----------|--------|--------------|--------------|
